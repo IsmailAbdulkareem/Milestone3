@@ -1,5 +1,5 @@
-import Image from "next/image";
-import HeroSection from "./component/Hero";
+import Navbar from "./component/Navbar";
+import HeroSection from "./component/Navbar";
 import AboutUs from "./component/AboutUs";
 import FoodCategory from "./component/FoodCatagory";
 import WhyChooseUs from "./component/WhyChooseUs";
@@ -12,7 +12,7 @@ import FoodProcessComponent from"./component/FoodProcessComponent";
 export default function Home() {
   return (
     <div>
-      
+      <Navbar />
       <HeroSection />
       <AboutUs />
       <FoodCategory />
