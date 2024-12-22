@@ -1,10 +1,11 @@
+import CheckoutPageHero from "../component/CheckoutPageHero"
+import CheckOut from "../component/CheckOut"
 
 const PagesPage = () => {
     return (
       <div>
-       
-        <h1>Welcome to the Pages Page</h1>
-        <p>This is where all blog posts will be listed.</p>
+       <CheckoutPageHero />
+       <CheckOut/>
     
       </div>
     );
