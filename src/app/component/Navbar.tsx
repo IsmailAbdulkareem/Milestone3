@@ -6,15 +6,30 @@ import { FiMenu, FiX, FiSearch, FiShoppingCart } from 'react-icons/fi';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const menuItems = [
     { name: 'Home', href: '/' },
     { name: 'Menu', href: '/menu' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Pages', href: '/pages' },
+    { name: 'Pages', href: '#' },
     { name: 'About', href: '/about' },
     { name: 'Shop', href: '/shop' },
     { name: 'Contact', href: '/contact' },
+  ];
+
+  const dropdownItems = [
+    { name: 'Our Chef', href: '/OurChef' },
+    { name: 'Our Shop', href: '/OurShop' },
+    { name: 'Shop Details', href: '/ShopDetails' },
+    { name: 'Shopping Cart', href: '/ShoppingCart' },
+    { name: 'Blog List', href: '/blog-list' },
+    { name: 'Blog Details', href: '/blog-details' },
+    { name: 'About Us', href: '/about-us' },
+    { name: 'Checkout Page', href: '/checkout' },
+    { name: 'FAQ Page', href: '/faq' },
+    { name: 'Signup Page', href: '/signup' },
+    { name: '404 Page', href: '/404' },
   ];
 
   return (
@@ -43,14 +58,40 @@ function Navbar() {
           }`}
         >
           {menuItems.map((item) => (
-            <li key={item.name}>
-              <Link
-                href={item.href}
-                className="text-[16px] leading-6 text-white hover:text-[#FF9F0D] font-medium transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
+            <li key={item.name} className="relative">
+              {item.name === 'Pages' ? (
+                <>
+                  <button
+                    className="text-[16px] leading-6 text-white hover:text-[#FF9F0D] font-medium transition-colors"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                  >
+                    {item.name}
+                  </button>
+                  {dropdownOpen && (
+                    <ul className="absolute top-full left-0 bg-black mt-2 rounded-md shadow-lg">
+                      {dropdownItems.map((dropdownItem) => (
+                        <li key={dropdownItem.name}>
+                          <Link
+                            href={dropdownItem.href}
+                            className="block px-4 py-2 text-[14px] text-white hover:text-[#FF9F0D] hover:bg-gray-800 transition-colors"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            {dropdownItem.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="text-[16px] leading-6 text-white hover:text-[#FF9F0D] font-medium transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

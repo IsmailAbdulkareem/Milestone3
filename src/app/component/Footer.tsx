@@ -16,7 +16,7 @@ import { FaPinterest } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-black text-white pt-9">
       <div className="flex flex-col md:flex-row justify-center items-center bg-black px-3 md:px-[135px] py-8">
         <div className="text-white text-center md:text-left md:w-[50%] w-full">
           <h2 className="text-[20px] md:text-[32px] font-semibold">
