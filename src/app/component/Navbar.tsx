@@ -9,27 +9,27 @@ function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const menuItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Menu', href: '/menu' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Pages', href: '#' },
-    { name: 'About', href: '/about' },
-    { name: 'Shop', href: '/shop' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home',     href: '/' },
+    { name: 'Menu',     href: '/menu' },
+    { name: 'Our Chef', href: '/OurChef' },
+    { name: 'Blog',     href: '/blog' },
+    { name: 'Pages',    href: '#' },
+    { name: 'About',    href: '/about' },
+    { name: 'Shop',     href: '/shop' },  
   ];
 
   const dropdownItems = [
-    { name: 'Our Chef', href: '/OurChef' },
-    { name: 'Our Shop', href: '/OurShop' },
-    { name: 'Shop Details', href: '/ShopDetails' },
+    { name: 'Our Shop',      href: '/OurShop' },
+    { name: 'Contact',       href: '/contact' },
+    { name: 'Shop Details',  href: '/ShopDetails' },
     { name: 'Shopping Cart', href: '/ShoppingCart' },
-    { name: 'Blog List', href: '/blog-list' },
-    { name: 'Blog Details', href: '/blog-details' },
-    { name: 'About Us', href: '/about-us' },
+    { name: 'Blog List',     href: '/blog-list' },
+    { name: 'Blog Details',  href: '/blog-details' },
+    { name: 'About Us',      href: '/about-us' },
     { name: 'Checkout Page', href: '/checkout' },
-    { name: 'FAQ Page', href: '/faq' },
-    { name: 'Signup Page', href: '/signup' },
-    { name: '404 Page', href: '/404' },
+    { name: 'FAQ Page',      href: '/faq' },
+    { name: 'Signup Page',   href: '/signup' },
+    { name: '404 Page',      href: '/404' },
   ];
 
   return (
@@ -68,13 +68,16 @@ function Navbar() {
                     {item.name}
                   </button>
                   {dropdownOpen && (
-                    <ul className="absolute top-full left-0 bg-black mt-2 rounded-md shadow-lg">
+                    <ul className="absolute top-full left-0 w-[200px] bg-black mt-2 rounded-md shadow-lg z-20">
                       {dropdownItems.map((dropdownItem) => (
                         <li key={dropdownItem.name}>
                           <Link
                             href={dropdownItem.href}
                             className="block px-4 py-2 text-[14px] text-white hover:text-[#FF9F0D] hover:bg-gray-800 transition-colors"
-                            onClick={() => setMenuOpen(false)}
+                            onClick={() => {
+                              setDropdownOpen(false);
+                              setMenuOpen(false);
+                            }}
                           >
                             {dropdownItem.name}
                           </Link>

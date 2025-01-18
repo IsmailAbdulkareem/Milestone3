@@ -8,12 +8,14 @@ import MenuSection from "./component/MenuSection";
 import MeetOurChef from "./component/MeetOurChef";
 import Testimonials from "./component/Testimonials";
 import FoodProcessComponent from"./component/FoodProcessComponent";
+import FoodList from "./menu/foods"
 export default function Home() {
   return (
     <div>
       
       <HeroSection />
       <AboutUs />
+      <FoodList />
       <FoodCategory />
       <WhyChooseUs />
       <Clients />

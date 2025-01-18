@@ -1,62 +1,59 @@
-import React from "react";
-import Image from "next/image";
-import TahminaRuml from "../../../assests/TahminaRuml.png"
-import JorinaBegum from '../../../assests/JorinaBegum.png'
-import MMohammad from '../../../assests/MMohammad.png';
-import MunnaKathy from '../../../assests/MunnaKathy.png';
-import Tahmina from "../../../assests/Tahmina.png"
-import BisnuDevgon from "../../../assests/BisnuDevgon.png";
-import MotinMolladsef from "../../../assests/MotinMolladsef.png";
-import WilliamRuml from "../../../assests/WilliamRuml.png";
-import KetsWilliamRoy from "../../../assests/KetsWilliamRoy.png";
-import MahmudKholli from "../../../assests/MahmudKholli.png";
-import AtaurRahman from "../../../assests/AtaurRahman.png";
-import MonalisaHolly from '../../../assests/MonalisaHolly.png'
+"use client";
+import { useEffect, useState } from "react";
+import client, { urlFor } from "../../sanity/sanity";
 
-const chefs = [
-  { name: "TahminaRuml", role: "Chef", img: TahminaRuml },
-  { name: "JorinaBegum", role: "Chef", img: JorinaBegum },
-  { name: "M.Mohammad", role: "Chef", img: MMohammad },
-  { name: "MunnaKathy", role: "Chef", img: MunnaKathy },
-  { name: "Tahmina", role: "Chef", img: Tahmina },
-  { name: "BisnuDevgon", role: "Chef", img: BisnuDevgon },
-  { name: "MotinMolladsef", role: "Chef", img: MotinMolladsef },
-  { name: "WilliamRuml", role: "Chef", img: WilliamRuml },
-  { name: "KetsWilliamRoy", role: "Chef", img: KetsWilliamRoy },
-  { name: "MahmudKholli", role: "Chef", img: MahmudKholli },
-  { name: "AtaurRahman", role: "Chef", img: AtaurRahman },
-  { name: "MonalisaHolly", role: "Chef", img: MonalisaHolly },
-];
+// Define a type for Chef data
+interface Chef {
+  _id: string;
+  name: string;
+  position: string;
+  specialty: string;
+  description: string;
+  image: {
+    asset: {
+      _ref: string;
+    };
+  };
+}
 
-const ChefGallery: React.FC = () => {
+export default function ChefList() {
+  const [chefs, setChefs] = useState<Chef[]>([]);
+
+  useEffect(() => {
+    const fetchChefs = async () => {
+      const data = await client.fetch(`*[_type == "chef"]`);
+      setChefs(data);
+    };
+    fetchChefs();
+  }, []);
+
   return (
-    <div
-      style={{
-        width: "1320px",
-        position: "relative", // Changed to relative
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-        gap: "0px",
-        opacity: 1,
-        marginTop: "30px", // Add spacing instead of absolute positioning
-        marginLeft: "30px", // Optional, if you want padding
-      }}
-    >
-      {chefs.map((chef, index) => (
-        <div key={index} style={{ textAlign: "center", color: "white" }}>
-          <Image
-            src={chef.img}
-            alt={chef.name}
-            width={320} // Adjusted size for each image
-            height={320}
-            style={{ borderRadius: "8px" }}
-          />
-          <h3 style={{ marginTop: "8px",color:"black" , fontSize: "18px" }}>{chef.name}</h3>
-          <p style={{ fontSize: "16px",color:"black" , opacity: 0.8 }}>{chef.role}</p>
-        </div>
-      ))}
+    <div className="bg-black py-10">
+      <h1 className="text-white text-center text-3xl font-bold mb-8">
+        Meet Our Chefs
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
+        {chefs.map((chef) => (
+          <div
+            key={chef._id}
+            className="bg-white rounded-lg shadow-lg hover:scale-105 transform transition duration-300"
+          >
+            <img
+              src={urlFor(chef.image).url()}
+              alt={chef.name}
+              className="w-auto h-auto object-cover rounded-t-lg"
+            />
+            <div className="p-4">
+              <h2 className="text-lg font-bold text-black">{chef.name}</h2>
+              <p className="text-gray-700 text-sm">{chef.position}</p>
+              <p className="text-black font-bold mt-2">
+                Specialty: {chef.specialty}
+              </p>
+              <p className="text-gray-500 text-sm mt-1">{chef.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
-};
-
-export default ChefGallery;
+}
