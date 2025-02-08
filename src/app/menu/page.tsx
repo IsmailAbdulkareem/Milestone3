@@ -5,12 +5,12 @@ import Clients from "../component/Clients"
 import DessertMenu from "../component/DessertMenu"
 import Drinks from "../component/Drinks"
 import PartnersAndClients from "../component/Clientsandpartner"
-import FoodList from "./foods"
+import ShopList from "./foods"
 const MenuPage = () => {
     return (
       <div>
       <Hero />
-      <FoodList/>
+      <ShopList/>
       <StarterMenu />
       <MainCourseMenu />
       <Clients />

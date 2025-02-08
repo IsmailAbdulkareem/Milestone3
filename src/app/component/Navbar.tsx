@@ -15,20 +15,14 @@ function Navbar() {
     { name: 'Blog',     href: '/blog' },
     { name: 'Pages',    href: '#' },
     { name: 'About',    href: '/about' },
-    { name: 'Shop',     href: '/shop' },  
+    { name: 'Signup',   href: '/Signin' },
+
   ];
 
   const dropdownItems = [
-    { name: 'Our Shop',      href: '/OurShop' },
-    { name: 'Contact',       href: '/contact' },
-    { name: 'Shop Details',  href: '/ShopDetails' },
-    { name: 'Shopping Cart', href: '/ShoppingCart' },
-    { name: 'Blog List',     href: '/blog-list' },
-    { name: 'Blog Details',  href: '/blog-details' },
-    { name: 'About Us',      href: '/about-us' },
-    { name: 'Checkout Page', href: '/checkout' },
-    { name: 'FAQ Page',      href: '/faq' },
-    { name: 'Signup Page',   href: '/signup' },
+    { name: 'Blog Details',  href: '/BlogDetails' },  
+    { name: 'Checkout Page', href: '/checkOut' },
+    { name: 'FAQ Page',      href: '/FAQ' },
     { name: '404 Page',      href: '/404' },
   ];
 
@@ -109,8 +103,10 @@ function Navbar() {
             />
             <FiSearch className="h-5 w-5 text-[#FF9F0D] ml-2" />
           </div>
-          <FiShoppingCart className="h-6 w-6 text-[#FF9F0D] cursor-pointer" />
-        </div>
+          <Link href="/ShoppingCart">
+    <FiShoppingCart className="h-6 w-6 text-[#FF9F0D] cursor-pointer" />
+</Link>   
+     </div>
       </nav>
     </header>
   );
