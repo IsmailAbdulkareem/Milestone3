@@ -9,69 +9,109 @@ function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const menuItems = [
-    { name: 'Home',     href: '/' },
-    { name: 'Menu',     href: '/menu' },
+    { name: 'Home', href: '/' },
+    { name: 'Menu', href: '/menu' },
     { name: 'Our Chef', href: '/OurChef' },
-    { name: 'Blog',     href: '/blog' },
-    { name: 'Pages',    href: '#' },
-    { name: 'About',    href: '/about' },
-    { name: 'Signup',   href: '/Signin' },
-
+    { name: 'Blog', href: '/blog' },
+    { name: 'Pages', href: '#' },
+    { name: 'About', href: '/about' },
+    { name: 'Signup', href: '/Signin' },
   ];
 
   const dropdownItems = [
-    { name: 'Blog Details',  href: '/BlogDetails' },  
+    { name: 'Blog Details', href: '/BlogDetails' },
     { name: 'Checkout Page', href: '/checkOut' },
-    { name: 'FAQ Page',      href: '/FAQ' },
-    { name: '404 Page',      href: '/404' },
+    { name: 'FAQ Page', href: '/FAQ' },
+    { name: '404 Page', href: '/404' },
   ];
 
   return (
-    <header className="w-full bg-black fixed top-0 px-4 py-4 sm:px-6 lg:px-20 z-50">
+    <header className="w-full bg-black fixed top-0 left-0 right-0 px-4 py-4 sm:px-6 lg:px-20 z-50">
       <nav className="flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-[20px] sm:text-[24px] leading-[32px] font-bold text-white z-10"
-        >
+        <Link href="/" className="text-[20px] sm:text-[24px] font-bold text-white">
           Food<span className="text-[#FF9F0D]">tuck</span>
         </Link>
 
         {/* Hamburger Menu for Small Screens */}
-        <button
-          className="lg:hidden text-white z-10"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <button className="lg:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>
           {!menuOpen ? <FiMenu size={24} /> : <FiX size={24} />}
         </button>
 
-        {/* Navigation Links */}
-        <ul
-          className={`fixed inset-0 bg-black flex flex-col items-center justify-center gap-6 lg:static lg:flex-row lg:bg-transparent lg:gap-8 transition-transform duration-300 ${
-            menuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-          }`}
+        {/* Mobile Navigation */}
+        <div
+          className={`fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center transition-transform duration-300 z-40 ${
+            menuOpen ? 'translate-x-0' : '-translate-x-full'
+          } lg:hidden`}
         >
+          <button className="absolute top-5 right-5 text-white" onClick={() => setMenuOpen(false)}>
+            <FiX size={24} />
+          </button>
+
+          <ul className="flex flex-col gap-6">
+            {menuItems.map((item) => (
+              <li key={item.name} className="relative">
+                {item.name === 'Pages' ? (
+                  <>
+                    <button
+                      className="text-[18px] text-white hover:text-[#FF9F0D] font-medium"
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                    >
+                      {item.name}
+                    </button>
+                    {dropdownOpen && (
+                      <ul className="absolute left-1/2 transform -translate-x-1/2 top-10 w-48 bg-black border border-gray-700 rounded-md shadow-lg z-50">
+                        {dropdownItems.map((dropdownItem) => (
+                          <li key={dropdownItem.name}>
+                            <Link
+                              href={dropdownItem.href}
+                              className="block px-4 py-2 text-white hover:text-[#FF9F0D] hover:bg-gray-800"
+                              onClick={() => {
+                                setDropdownOpen(false);
+                                setMenuOpen(false);
+                              }}
+                            >
+                              {dropdownItem.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="text-[18px] text-white hover:text-[#FF9F0D] font-medium"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden lg:flex items-center gap-8">
           {menuItems.map((item) => (
             <li key={item.name} className="relative">
               {item.name === 'Pages' ? (
                 <>
                   <button
-                    className="text-[16px] leading-6 text-white hover:text-[#FF9F0D] font-medium transition-colors"
+                    className="text-[16px] text-white hover:text-[#FF9F0D] font-medium"
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                   >
                     {item.name}
                   </button>
                   {dropdownOpen && (
-                    <ul className="absolute top-full left-0 w-[200px] bg-black mt-2 rounded-md shadow-lg z-20">
+                    <ul className="absolute top-full left-0 w-48 bg-black border border-gray-700 rounded-md shadow-lg z-50">
                       {dropdownItems.map((dropdownItem) => (
                         <li key={dropdownItem.name}>
                           <Link
                             href={dropdownItem.href}
-                            className="block px-4 py-2 text-[14px] text-white hover:text-[#FF9F0D] hover:bg-gray-800 transition-colors"
-                            onClick={() => {
-                              setDropdownOpen(false);
-                              setMenuOpen(false);
-                            }}
+                            className="block px-4 py-2 text-white hover:text-[#FF9F0D] hover:bg-gray-800"
+                            onClick={() => setDropdownOpen(false)}
                           >
                             {dropdownItem.name}
                           </Link>
@@ -81,11 +121,7 @@ function Navbar() {
                   )}
                 </>
               ) : (
-                <Link
-                  href={item.href}
-                  className="text-[16px] leading-6 text-white hover:text-[#FF9F0D] font-medium transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
+                <Link href={item.href} className="text-[16px] text-white hover:text-[#FF9F0D] font-medium">
                   {item.name}
                 </Link>
               )}
@@ -93,7 +129,7 @@ function Navbar() {
           ))}
         </ul>
 
-        {/* Search Bar and Icons */}
+        {/* Search Bar and Cart Icon */}
         <div className="hidden lg:flex items-center gap-4">
           <div className="flex items-center border-2 border-[#FF9F0D] rounded-full px-4 py-2">
             <input
@@ -104,9 +140,9 @@ function Navbar() {
             <FiSearch className="h-5 w-5 text-[#FF9F0D] ml-2" />
           </div>
           <Link href="/ShoppingCart">
-    <FiShoppingCart className="h-6 w-6 text-[#FF9F0D] cursor-pointer" />
-</Link>   
-     </div>
+            <FiShoppingCart className="h-6 w-6 text-[#FF9F0D] cursor-pointer" />
+          </Link>
+        </div>
       </nav>
     </header>
   );
