@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import FoodProcess from "../../../assests/FoodProcess.png"; // Adjust the path accordingly
 
 const FoodProcessComponent: React.FC = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import bhendi from "../../../assests/bhendi.png";
 import GlowCheese from "../../../assests/GlowCheese.png";
 import FreshBread from "../../../assests/FreshBread.png";

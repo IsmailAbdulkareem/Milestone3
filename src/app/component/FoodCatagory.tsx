@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 // Import your images
 import dish1 from "../../../assests/dish1.png"; // Replace with the actual file name

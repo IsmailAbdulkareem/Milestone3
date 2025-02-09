@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import logo1 from "../../../assests/logo1.png";
 import logo2 from "../../../assests/logo2.png";
 import logo3 from "../../../assests/logo3.png";

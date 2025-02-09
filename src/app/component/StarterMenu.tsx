@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import menuImage from "../../../assests/menuImage.png"; // Update the path as needed
 
 const StarterMenu: React.FC = () => {

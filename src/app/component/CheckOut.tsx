@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import chickentikka from "../../../assests/chickentikka.png"
 const Checkout: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 // Import images from your assets folder
 import image1 from "../../../assests/image1.png"; 

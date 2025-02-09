@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { Great_Vibes } from 'next/font/google';
 const greatVibes = Great_Vibes({
   weight: ['400'], // Specify weights if necessary

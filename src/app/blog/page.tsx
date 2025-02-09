@@ -1,5 +1,5 @@
 import BlogList from "../component/BlogList"
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import { FiSearch } from 'react-icons/fi';
 import React from 'react';

@@ -3,7 +3,7 @@ import Group from "../../../assests/Group.png";
 import Group2 from "../../../assests/Group2.png";
 import Group3 from "../../../assests/Group3.png";
 import Group4 from "../../../assests/Group4.png";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export const Clients = () => {
   return (

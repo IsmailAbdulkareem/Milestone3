@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import React from 'react';
 import tacos from '../../../assests/tacoss.png';
 import nuggets from '../../../assests/nuggets.png';

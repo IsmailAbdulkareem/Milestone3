@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import menuapple from "../../../assests/menuapple.png"; // Adjust path accordingly
 
 const OurChef: React.FC = () => {
