@@ -23,3 +23,14 @@
     text-wrap: balance;
   }
 }
+
+@media (max-width: 768px) {
+  div, section, main {
+    flex-wrap: wrap;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
